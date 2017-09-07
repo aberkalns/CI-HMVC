@@ -20,7 +20,7 @@ This can be used together with module/config/autoload.php, however using the $au
 			'libraries' => array('email'),
 		);
 	}
-
+```
 The Modules::$locations array may be set in the application/config.php file. ie:
 
     <?php
