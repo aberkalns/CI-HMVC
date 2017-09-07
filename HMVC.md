@@ -12,7 +12,6 @@ Module Controllers can be used as normal Controllers or HMVC Controllers and the
 All controllers can contain an $autoload class variable, which holds an array of items to load prior to running the constructor. 
 This can be used together with module/config/autoload.php, however using the $autoload variable only works for that specific controller.
     
-	:::php
     <?php     
 	class Xyz extends MX_Controller 
 	{
