@@ -23,7 +23,6 @@ This can be used together with module/config/autoload.php, however using the $au
 
 The Modules::$locations array may be set in the application/config.php file. ie:
 
-    :::php
     <?php
     $config['modules_locations'] = array(
         APPPATH.'modules/' => '../modules/',
@@ -48,7 +47,6 @@ To use Modular Separation only, without HMVC, controllers will extend the CodeIg
 
 You must use PHP5 style constructors in your controllers. ie:
 
-    :::php
     <?php
 	class Xyz extends MX_Controller 
 	{
@@ -64,7 +62,6 @@ All  MY_ extension libraries should include (require) their equivalent MX librar
 
 Each module may contain a config/routes.php file where routing and a default controller can be defined for that module using: 
 	
-	:::php
 	<?php
     $route['module_name'] = 'controller_name';
 
@@ -76,7 +73,6 @@ Resources may be cross loaded between modules. ie: $this->load->model('module/mo
 
 Modules::run() is designed for returning view partials, and it will return buffered output (a view) from a controller. The syntax for using modules::run is a URI style segmented string and unlimited variables.
 	
-	:::php
 	<?php
 	/** module and controller names are different, you must include the method name also, including 'index' **/
 	modules::run('module/controller/method', $params, $...);
@@ -104,13 +100,12 @@ The library loader has also been updated to accommodate some CI 1.7 features: ie
 accepted in the same fashion as model aliases, and loading config files from the module config directory 
 as library parameters (re: form_validation.php) have beed added.
 
-$config = $this->load->config(â€˜config_fileâ€™),  Returns the loaded config array to your variable.
+$config = $this->load->config("config_file"),  Returns the loaded config array to your variable.
 
 Models and libraries can also be loaded from sub-directories in their respective application directories.
 
 When using form validation with MX you will need to extend the CI_Form_validation class as shown below, 
 
-	:::php
 	<?php
 	/** application/libraries/MY_Form_validation **/ 
 	class MY_Form_validation extends CI_Form_validation 
@@ -121,7 +116,6 @@ When using form validation with MX you will need to extend the CI_Form_validatio
 before assigning the current controller as the $CI variable to the form_validation library. 
 This will allow your callback methods to function properly. (This has been discussed on the CI forums also).
 	
-	:::php
 	<?php
 	class Xyz extends MX_Controller 
 	{
@@ -138,7 +132,6 @@ This will allow your callback methods to function properly. (This has been discu
 
 Using a Module as a view partial from within a view is as easy as writing:
 
-	:::php
 	<?php echo Modules::run('module/controller/method', $param, $...); ?> 
 
 Parameters are optional, You may pass any number of parameters.
@@ -146,7 +139,7 @@ Parameters are optional, You may pass any number of parameters.
 ### Modular Extensions installation
 
 1. Start with a clean CI install
-2. Set $config[â€˜base_urlâ€™] correctly for your installation
+2. Set $config['base_url'] correctly for your installation
 3. Access the URL /index.php/welcome => shows Welcome to CodeIgniter
 4. Drop Modular Extensions third_party files into the application/third_party directory
 5. Drop Modular Extensions core files into application/core, the MY_Controller.php file is not required unless you wish to create your own controller extension
@@ -164,13 +157,13 @@ You should now have a running Modular Extensions installation.
 -Steps 1-3 tell you how to get a standard CI install working - if you have a clean/tested CI install, skip 
 to step 4.
 
--Steps 4-5 show that normal CI still works after installing MX - it shouldnâ€™t interfere with the normal CI 
+-Steps 4-5 show that normal CI still works after installing MX - it shouldn't interfere with the normal CI 
 setup.
 
--Steps 6-8 show MX working alongside CI - controller moved to the â€œwelcomeâ€ module, the view file remains 
+-Steps 6-8 show MX working alongside CI - controller moved to the "welcome" module, the view file remains 
 in the CI application/views directory - MX can find module resources in several places, including the application directory.
 
--Steps 9-11 show MX working with both controller and view in the â€œwelcomeâ€ module - there should be no 
+-Steps 9-11 show MX working with both controller and view in the "welcome" module - there should be no 
 files in the application/controllers or application/views directories.
 
 
@@ -194,19 +187,19 @@ Then the controller needs to load the data into a view. So instead of the main c
 page and the shopping cart, the shopping cart MVC can be loaded directly in the page. 
 The main controller doesnâ€™t need to know about it, and is totally isolated from it.
 
-In CI we canâ€™t call more than 1 controller per request. Therefore, to achieve HMVC, we have to simulate 
-controllers. It can be done with libraries, or with this â€œModular Extensions HMVCâ€ contribution.
+In CI we can't call more than 1 controller per request. Therefore, to achieve HMVC, we have to simulate 
+controllers. It can be done with libraries, or with this "Modular Extensions HMVC" contribution.
 
-The differences between using a library and a â€œModular HMVCâ€ HMVC class is:
+The differences between using a library and a "Modular HMVC" HMVC class is:
 1. No need to get and use the CI instance within an HMVC class
 2. HMVC classes are stored in a modules directory as opposed to the libraries directory.
 
 Q. Is Modular Extensions HMVC the same as Modular Separation?
 
-A. Yes and No. Like Modular Separation, Modular Extensions makes modules â€œportableâ€ to other installations. For example, if you make a nice self-contained model-controller-view set of files you can bring that MVC into another project by copying just one folder - everything is in one place instead of spread around model, view and controller folders.
+A. Yes and No. Like Modular Separation, Modular Extensions makes modules "portable" to other installations. For example, if you make a nice self-contained model-controller-view set of files you can bring that MVC into another project by copying just one folder - everything is in one place instead of spread around model, view and controller folders.
 
 Modular HMVC means modular MVC triads. Modular Separation and Modular Extensions allows related 
 controllers, models, libraries, views, etc. to be grouped together in module directories and used 
 like a mini application. But, Modular Extensions goes one step further and allows those modules to 
-â€œtalkâ€ to each other. You can get controller output without having to go out through the http interface 
+"talk" to each other. You can get controller output without having to go out through the http interface 
 again.
