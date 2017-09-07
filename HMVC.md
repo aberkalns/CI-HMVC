@@ -185,7 +185,7 @@ This is most useful when you need to load a view and its data within a view. Thi
 cart to a page. The shopping cart needs its own controller which may call a model to get cart data. 
 Then the controller needs to load the data into a view. So instead of the main controller handling the 
 page and the shopping cart, the shopping cart MVC can be loaded directly in the page. 
-The main controller doesnâ€™t need to know about it, and is totally isolated from it.
+The main controller doesn't need to know about it, and is totally isolated from it.
 
 In CI we can't call more than 1 controller per request. Therefore, to achieve HMVC, we have to simulate 
 controllers. It can be done with libraries, or with this "Modular Extensions HMVC" contribution.
