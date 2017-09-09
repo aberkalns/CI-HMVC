@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Welcome to CodeIgniter with HMVC Modular Extensions</title> 
 </head> 
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
 		<a class="navbar-brand" href="#">CodeIgniter with HMVC Modular Extensions</a>
 	</nav>
 
